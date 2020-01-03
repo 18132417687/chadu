@@ -1,0 +1,52 @@
+<!--pages/videodetail/videodetail.wxml-->
+<!-- 标题 -->
+<view class="detail">
+  <view class="titledetail">
+    <text class="title">{{videoDetail.video_title}}</text>
+    <view class="titledate">
+      <view class="author">
+        <text>{{videoDetail.video_author}}</text>
+        <text>{{videoDetail.video_date}}</text>
+      </view>
+      <view class="read">
+        <text>阅读量:{{videoDetail.video_read}}次</text>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 底部部分 -->
+<view class="bottom">
+  <view class="home" bindtap="home">
+    <icon class="icon iconfont iconshouye4"></icon>
+    <text>首页</text>
+  </view>
+  <view class="service">
+    <view bindtap="zan" class="serviceMask">
+      <view class="zan1" wx:if="{{!state}}">
+        <icon class="icon iconfont iconlike" ></icon>
+        <text>点赞</text>
+      </view>
+      <view class="zan2"  wx:else >
+        <icon class="icon iconfont iconlike" style="color:red"></icon>
+        <text style="color:red"> 点赞</text>
+      </view>
+
+    </view>
+  </view>
+  <view class="evaluate">评价</view>
+</view>
+<!-- 文章详情 -->
+<view class="article">
+  <text class="normal">{{videoDetail.video_para1}}</text>
+  <video class="img" src="http://localhost:80/chadutp/public{{videoDetail.video_img}}"></video> 
+  <text class="normal">{{videoDetail.video_para2}}</text>
+  <text class="normal">{{videoDetail.video_para3}}</text>
+  <text class="normal">{{videoDetail.video_para4}}</text>
+  <text class="normal">{{videoDetail.video_para5}}</text>
+  <image class="img" src="http://localhost:80/chadutp/public{{videoDetail.video_img1}}"></image> 
+  <text class="normal">{{videoDetail.video_para6}}</text>
+  <text class="normal">{{videoDetail.video_para7}}</text>
+  <text class="normal">{{videoDetail.video_para8}}</text>
+  <text class="normal">{{videoDetail.video_para9}}</text>
+  <text class="normal">{{videoDetail.video_para10}}</text>
+</view>

@@ -1,0 +1,50 @@
+<!--pages/car/car.wxml-->
+<!-- 店铺 -->
+<block wx:if="{{show}}">
+  <view class="empty">
+    <icon class="icon iconfont iconZ"></icon>
+    <text>购物车竟然是空的</text>
+    <text>再忙，也要记得买点什么犒劳自己~</text>
+    <button bindtap="around">去逛逛</button>
+  </view>
+</block>
+<block wx:else>
+  <view class="car" wx:for="{{carts}}" wx:key="index" wx:for-index='index' data-goodsid="{{item.goods_id}}">
+    <view class="self">平台自营</view>
+    <!-- 商品购买详细信息 -->
+    <view class="carDetail" data-index="{{index}}">
+      <view class="carImg">
+        <icon wx:if="{{item.selected}}" type="success" color="#ec762f" size="20" bindtap="selectList" data-index="{{index}}" data-goodsid="{{item.goods_id}}"></icon>
+        <icon wx:else type="circle" bindtap="selectList" size="20" data-index="{{index}}" data-goodsid="{{item.goods_id}}"></icon>
+        <!-- <!-- <icon class="iconfont iconxianshi_xuanzetianchong"></icon> -->
+        <image src="http://localhost:80/chadutp/public{{item.goods_img}}" bindtap="goodsdetail" data-goodsid="{{item.goods_id}}"></image>
+      </view>
+      <view class="carDescript">
+        <text bindtap="goodsdetail" data-goodsid="{{item.goods_id}}">{{item.goods_title}}</text>
+        <view class="carPrice">
+          <view class="price">￥{{item.goods_price}}</view>
+          <icon class="icon iconfont iconweb-icon-" bindtap="del" data-index="{{index}}" data-goodsid="{{item.goods_id}}"></icon>
+        </view>
+        <view class="number">
+          <view class="min" bindtap="reduce" data-index="{{index}}" data-goodsid="{{item.goods_id}}">-</view>
+          <view class="num">{{item.num}}</view>
+          <view class="add" bindtap="add" data-index="{{index}}" data-goodsid="{{item.goods_id}}">+</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="kong"></view>
+<!-- 全选 -->
+<view class="select">
+  <view class="selected">
+    <icon wx:if="{{selectAllStatus}}" data-goodsid="{{item.goods_id}}" type="success" color="#ec762f" size="20" bindtap="selectAll" ></icon>
+    <icon wx:else type="circle" data-goodsid="{{item.goods_id}}" bindtap="selectAll" size="20"></icon>
+    <!-- <icon class="icon iconfont iconxuanze" bindtap="selectAll"></icon> -->
+    <text bindtap="selectAll">全选</text>
+  </view>
+  <view class="total">
+    <text>总计:{{total}}</text>
+    <view bindtap="payment" class="payment" data-info="{{carts}}" data-goodsid="{{item.goods_id}}">结算({{number}})</view>
+  </view>
+</view>
+</block>

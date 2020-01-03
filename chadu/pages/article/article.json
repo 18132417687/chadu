@@ -1,0 +1,6 @@
+{
+  "usingComponents": {},
+  "navigationBarTitleText": "学茶",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50
+}

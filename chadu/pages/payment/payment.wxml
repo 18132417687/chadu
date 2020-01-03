@@ -1,0 +1,79 @@
+<!--pages/payment/payment.wxml-->
+<scroll-view class="zong" scroll-y style="height:{{listH}}px">
+  <view wx:if="{{show}}" class="noaddress">
+    <text>您还没有填加或选择地址，</text>
+    <text bindtap="goaddress">请添加！</text>
+  </view>
+  <!-- <view class="addresscontent"> -->
+  <!-- 用户地址 -->
+  <view class="userAddress" bindtap="useraddress" wx:else>
+    <view class="userInfo">
+      <view class="username">
+        <text>收货人：{{selectedAddress.people}}</text>
+        <text>{{selectedAddress.phone}}</text>
+      </view>
+      <view class="address">
+        <text>收货地址：{{selectedAddress.address}}{{selectedAddress.detailaddress}}</text>
+        <icon class="icon iconfont icontubiao-"></icon>
+      </view>
+    </view>
+  </view>
+  <!-- 商品信息 -->
+  <view class="goodsInfo" wx:for="{{paymentList}}" wx:key="index" wx:for-index='index'
+>
+    <text class="goodsTitle">自营平台</text>
+    <view class="goods">
+      <view class="img">
+        <image src="http://localhost:80/chadutp/public{{item.goods_img}}"></image>
+      </view>
+      <view class="goosDetail">
+        <text>{{item.goods_title}}</text>
+        <text>规格：默认</text>
+        <view class="goodsPrice">
+          <view>数量：x{{item.num}}</view>
+          <view>单价：￥{{item.goods_price}}</view>
+        </view>
+      </view>
+    </view>
+    <!-- 优惠卷 -->
+    <view class="coupon">
+      <text>优惠卷</text>
+      <text>当前可用优惠卷</text>
+    </view>
+    <!-- 运费 -->
+    <view class="freight">
+      <text>运费</text>
+      <text>￥0</text>
+      <!-- </view> -->
+    </view>
+  </view>
+</scroll-view>
+<!-- 底部提交 -->
+<view class="bottom">
+  <view class="total">总计:￥{{total}}</view>
+  <view class="submit" bindtap="showInputLayer">提交</view>
+</view>
+
+
+<!-- 密码输入框 -->
+<view wx:if='{{showPayPwdInput}}'>
+  <view class='bg_layer'></view>
+  <view class='input_main'>
+    <view class='input_title'>
+      <view class='input_back' catchtap='hidePayLayer'>
+        <text></text>
+      </view>
+      <text>输入支付密码</text>
+    </view>
+    <view class='input_tip'>
+      <text>使用会员卡余额支付需要验证身份，验证通过后才可进行支付。</text>
+    </view>
+    <view class='input_row' catchtap='getFocus'>
+      <view class='pwd_item' wx:for='{{6}}' wx:key='item' wx:for-index='i'>
+        <text wx:if='{{pwdVal.length>i}}'></text>
+      </view>
+    </view>
+    <view class='forget_pwd' catchtap='hidePayLayer'>忘记密码</view>
+    <input class='input_control' password type='number' focus='{{payFocus}}' bindinput='inputPwd' maxlength='6' data-info="{{paymentList}}" />
+  </view>
+</view>

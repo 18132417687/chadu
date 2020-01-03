@@ -1,0 +1,106 @@
+<!--index.wxml-->
+<!-- 搜索框 -->
+<view class="searchOut">
+  <view class="search">
+    <icon class="icon iconfont iconsousuo"></icon>
+    <input type="text" style="color:#b7bbbb;font-size:32rpx" placeholder="请输入商品名称" placeholder-style="color:#b7bbbb;font-size:32rpx" bindblur='blur' value='{{keyWord}}' bindconfirm='goSearch' clearable></input>
+    <button bindtap="goSearch">搜索</button>
+  </view>
+</view>
+<!-- 轮播切换 -->
+<swiper indicator-dots="true" autoplay="true" interval="1500" indicator-color="#cbd3d3" indicator-active-color="#406565">
+  <block>
+    <swiper-item wx:for="{{bannerList}}" wx:key="index" wx:for-index='index'>
+      <image src="http://localhost:80/chadutp/public{{item.banner_img}}" class="slide-image" width="355" height="150" />
+    </swiper-item>
+  </block>
+</swiper>
+<!-- 广告滚动 -->
+<van-notice-bar speed="30" left-icon="volume-o" text="从即日起，凡是购买本店商品的用户均可以领取本店会员卡一张！" />
+<!-- 匠人推荐/活动 -->
+<view class="active">
+  <view class="activeLeft" bindtap="famous" data-teaid="81">
+    <image src="http://a4.qpic.cn/psb?/V14ekMgQ3WNHfd/LnNit2cdlOOfkiwl6yDUOSlUIhypo2A59Z.4lrW.pa8!/m/dL8AAAAAAAAAnull&bo=sAQgA7AEIAMRBzA!&rf=photolist&t=5"></image>
+    <text>匠人推荐</text>
+  </view>
+  <view class="activeRight">
+    <view class="activeRightTop" bindtap="active" data-teaid="82">
+      <view class="topLeft">
+        <text>促销活动</text>
+        <text>每日惊喜特大优惠</text>
+      </view>
+      <view class="topRight">
+        <image src="http://a1.qpic.cn/psb?/V14ekMgQ3WNHfd/Sa.*1AxWXfjjHKiJWRf*VhaTUsUq*EqtlK7zdTbX0u0!/m/dFQBAAAAAAAAnull&bo=yADIAMgAyAADByI!&rf=photolist&t=5"></image>
+      </view>
+    </view>
+    <view class="activeRightBottom">
+      <view class="topLeft" bindtap="new" data-teaid="83">
+        <text>新品推荐</text>
+        <text>新款上市火爆热卖</text>
+      </view>
+      <view class="topRight">
+        <image src="http://a4.qpic.cn/psb?/V14ekMgQ3WNHfd/B6tRf1b7H1CmCNdSA96K3gJwaLTcl0AJwIZl6mq1xWY!/m/dDcBAAAAAAAAnull&bo=yADIAMgAyAADByI!&rf=photolist&t=5"></image>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="selectedrecommend">
+  <text>精选推荐</text>
+</view>
+<view class="recommoned">
+  <view class="recommonedTop">
+    <image src="http://a4.qpic.cn/psb?/V14ekMgQ3WNHfd/sBJrzVPNOu2z7gRObuXby6.KMSOzUfMnnc1TB6swncI!/m/dL8AAAAAAAAAnull&bo=nQQJAZ0ECQERBzA!&rf=photolist&t=5">
+    </image>
+  </view>
+</view>
+<scroll-view scroll-x class="recommonedBottom">
+  <image src="http://localhost:80/chadutp/public{{item.goods_img}}" wx:for='{{boutiqueList}}' wx:key="index" wx:for-index='index' data-goodsid="{{item.goods_id}}" bindtap="boutiquedetail"> </image>
+</scroll-view>
+<!-- 为您优选商品列表 -->
+<view class="firstSelecttitle">
+  <text>为您优选</text>
+</view>
+<view class="firstSelectzong">
+  <view class="firstSelect">
+    <view class="firstSelectLeft" wx:for='{{fristList}}' wx:key="index" wx:for-index='index' data-goodsid="{{item.goods_id}}">
+      <image src="http://localhost:80/chadutp/public{{item.goods_img}}" data-goodsid="{{item.goods_id}}" bindtap="goodsdetail" class="goodsimg"></image>
+      <text data-goodsid="{{item.goods_id}}"  class="goodstitle">{{item.goods_title}}</text>
+      <view class="firstSelectPrice">
+        <text data-goodsid="{{item.goods_id}}" bindtap="goodsdetail">￥{{item.goods_price}}</text>
+        <icon class="icon iconfont icongouwuche2" bindtap="addCars" data-goodsdata="{{item}}" data-index='{{index}}'></icon>
+      </view>
+      <!--加入购物车遮罩层屏幕背景变暗的背景  -->
+      <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+      <!--加入购物车弹出框  -->
+      <view animation="{{animationData}}" class="layout" wx:if="{{showModalStatus}}" wx:if="{{TipStatus}}">
+        <form bindsubmit="sure" data-goodsid="{{item.goods_id}}" data-img="{{item.goods_img}}" data-price="{{item.goods_price}}" data-title="{{item.goods_title}}">
+          <view class="layoutGoods">
+            <view class="layoutDetail">
+              <image src="http://localhost:80/chadutp/public{{img}}"></image>
+              <view class="layoutPrice">
+                <text>￥{{price}}</text>
+                <text>{{title}}</text>
+              </view>
+            </view>
+            <view class="closeLayout" bindtap="hiddenmask">
+              <icon class="icon iconfont iconcuowu"></icon>
+            </view>
+          </view>
+          <view class="layoutSpecific">
+            <text>规格</text>
+            <text>默认</text>
+          </view>
+          <view class="layoutnum">
+            <text>数量</text>
+            <view class="addnum">
+              <view bindtap="reduce" class="min" data-index="{{index}}">-</view>
+              <view class="number">{{num}}</view>
+              <view bindtap="add" class="add" data-index="{{index}}">+</view>
+            </view>
+          </view>
+          <button class="quickAdd" form-type='submit'>立即加入</button>
+        </form>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,120 @@
+/* pages/category/category.wxss */
+page{
+  background: #efefef;
+}
+/* <!-- 搜索框 --> */
+.searchOut{
+  background-color: #ffffff;
+}
+.search{
+  width: 92%;
+  margin: 0 auto;
+  height: 80rpx;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.search icon{
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  position: absolute;left: 32rpx;
+  padding-left: 5rpx;
+  box-sizing: border-box;
+  color: #b7bbbb;
+  font-size: 36rpx;
+}
+.search input{
+  width:80%;
+  height: 60rpx;
+  border-radius: 10rpx;
+  background: #efeeee;
+  padding-left:44rpx;
+  box-sizing: border-box; 
+}
+.search button{
+  width: 18%;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  color: #a4a5a5;
+  border: 1px solid #a4a5a5;
+}
+/* 页面切换 */
+.tab{
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #d4d6d6;
+}
+/* 左部分 */
+.tabLeft{
+  width: 25%;
+  z-index: 999;
+  background: #ffffff;
+  /* border: 1px solid red; */
+}
+.tabLeft text{
+  display: block;
+  width: 100%;
+  text-align: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-bottom: 1px solid #efefef;
+  /* border-right: 1px solid #d4d6d6; */
+}
+.active {
+  color: #333;
+  background-color: #efefef;
+  font-size: 32rpx;
+}
+/* 右部分 */
+.tabRight{
+  width: 74%;
+  padding: 2%;
+  box-sizing: border-box;
+  position: absolute;top: 82rpx;left:25%;
+}
+.categoryImg{
+  display: block;
+  width: 100%;
+  height: 200rpx;
+}
+.teaName{
+  display: block;
+  width: 100%;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+.teaCategory{
+  width: 100%;
+  background: #ffffff;
+  display: flex;
+  flex-flow: row wrap;
+  /* justify-content: space-between; */
+  align-items: center;
+  padding-bottom: 10rpx;
+  box-sizing: border-box;
+}
+.teaEach{
+  width: 33.3%;
+}
+
+.teaEach image{
+  display: block;
+  width:140rpx;
+  height:140rpx;
+  border-radius:50%;
+  margin: 10rpx auto;
+}
+.teaEach text{
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 28rpx;
+  color: #333333;
+}

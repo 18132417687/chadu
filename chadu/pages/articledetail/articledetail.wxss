@@ -1,0 +1,152 @@
+/* pages/articledetail/articledetail.wxss */
+/* 标题 */
+.detail{
+  width: 100%;
+  border-bottom: 1px solid #efefef;
+  padding: 10rpx 0 10rpx 0;
+  box-sizing: border-box;
+}
+.titledetail{
+  width: 95%;
+  margin: 0 auto;
+}
+.title{
+  width: 100%;
+  color: #333333;
+  font-size: 36rpx;
+}
+.titledate{
+  width: 100%;
+  height: 50rpx;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
+  color: #999999;
+  font-size: 26rpx;
+}
+.titledate text:nth-of-type(1){
+  margin-right: 20rpx;
+}
+/* 文章详情 */
+.article{
+  width: 95%;
+  margin: 0 auto;
+  padding-bottom: 96rpx;
+  box-sizing: border-box;
+  margin-top: 20rpx;
+}
+.article text{
+  display: block;
+  width: 100%;
+  font-size: 30rpx;
+  line-height: 50rpx;
+}
+.weight{
+  height: 60rpx;
+  line-height: 60rpx;
+  font-weight: bold;
+}
+.normal{
+  padding-bottom: 50rpx;
+  box-sizing: border-box;
+  text-indent: 2rem;
+}
+.img{
+  display: block;
+  width: 90%;
+  margin: 0 auto;
+  height: 360rpx;
+  padding: 0 0 50rpx 0;
+  box-sizing: border-box;
+}
+
+/* 底部部分 */
+.bottom{
+  width: 100%;
+  height: 96rpx;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  border-top:1px solid #efefef; 
+  background: #ffffff;
+}
+.home,.service{
+  width: 17%;
+  height: 96rpx;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.home{
+  border-right: 1px solid #efefef;
+}
+.home icon,.service icon{
+  display: block;
+  margin: 0 auto;
+  color: #999999;
+  font-size: 48rpx;
+}
+.home text,.service text{
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: #999999;
+  font-size: 28rpx;
+}
+.evaluate{
+  width: 66%;
+  height: 96rpx;
+  line-height: 96rpx;
+  background: #fe4543;
+  color: #ffffff;
+  text-align: center;
+}
+/* 遮罩层 */
+.maskOut{
+  width: 100%;
+  position: fixed;top: 0;left: 0;
+}
+.maskIn{
+  width: 100%;
+  background: #000000;
+  opacity: 0.5;
+  position: fixed;top: 0;left: 0;
+  z-index: 998;
+}
+.serviceMask{
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+.serviceMask icon:nth-of-type(1){
+  display: block;
+  margin: 0 auto;
+  color: #999999;
+  font-size: 48rpx;
+}
+.serviceMask icon:nth-of-type(2){
+  display: block;
+  margin: 0 auto;
+  color: red;
+  font-size: 48rpx;
+}
+.serviceMask text{
+  display: block;
+  width: 100%;
+}
+.zan1{
+  width: 100%;
+  text-align: center;
+  color: #999999;
+}
+.zan2{
+  width: 100%;
+  text-align: center;
+}

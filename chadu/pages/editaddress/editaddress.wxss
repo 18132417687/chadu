@@ -1,0 +1,44 @@
+/* pages/editaddress/editaddress.wxss */
+page{
+  background: #efefef;
+}
+/* 修改收货地址 */
+.address{
+  width: 100%;
+  height: 100rpx;
+  padding: 0 2.5% 0 2.5%;
+  box-sizing: border-box;
+  border-bottom: 1px solid #efefef;
+  background: #ffffff;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+}
+.address text{
+  color: #999999;
+}
+.address input{
+  width: 80%;
+}
+/* 保存地址 */
+.bottom{
+  width: 100%;
+  height: 96rpx;
+  line-height: 96rpx;
+  position: fixed;left: 0;bottom: 0;
+  background: #fe4543;
+  color: #ffffff;
+  text-align: center;
+}
+.detailaddress{
+  width: 100%;
+  padding: 0 2.5% 0 2.5%;
+  box-sizing:  border-box;
+  background: #ffffff;
+}
+.detailaddress textarea{
+  color: #999999;
+}
+button::after{
+  border: none;
+}

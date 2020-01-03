@@ -1,0 +1,79 @@
+<!--pages/my/my.wxml-->
+<!-- 点击登录 -->
+<view class="login">
+  <image src="http://a1.qpic.cn/psb?/V14ekMgQ3WNHfd/AGWz6datZB05F0JWnZJ1sLa3FdgkxFwuecNmJzqyui0!/m/dFQBAAAAAAAAnull&bo=7gIsAe4CLAEDByI!&rf=photolist&t=5" class="bgImg"></image>
+  <view class="center">
+    <view class="peopleCenter">
+      <image wx:if="{{loginStatus}}" src="http://a4.qpic.cn/psb?/V14ekMgQ3WNHfd/h4jnGqNxpN8cOU2ZncWEqhh9OUlICIhOuVuzV1RejEA!/m/dMMAAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+      <image wx:else src="{{userInfo.avatarUrl}}" class="loginImg"></image>
+      <button wx:if="{{loginStatus}}" open-type="getUserInfo" bindgetuserinfo="login" class="clickLogin"> 点击授权登录账号</button>
+      <button wx:else class="clickLogin">{{userInfo.nickName}}</button>
+    </view>
+    <!-- <text>点击授权登录账号</text> -->
+
+    <view class="memberCenter" bindtap="member">
+      <icon class="icon iconfont iconhuiyuan1"></icon>
+      <text>银卡会员</text>
+      <icon class="icon iconfont icontubiao-"></icon>
+    </view>
+  </view>
+</view>
+<!-- 我的订单 -->
+<view class="order">
+  <view class="myorder">我的订单</view>
+  <view class="lookorder" bindtap="paylist">
+    <text>查看全部订单</text>
+    <icon class="icon iconfont icontubiao-"></icon>
+  </view>
+</view>
+<!-- 订单状态 -->
+<view class="orderdetail">
+  <view class="state">
+    <icon class="icon iconfont icondaifukuan1"></icon>
+    <text>待付款</text>
+  </view>
+  <view class="state">
+    <icon class="icon iconfont icondaifahuo"></icon>
+    <text>待发货</text>
+  </view>
+  <view class="state">
+    <icon class="icon iconfont icondaishouhuo2"></icon>
+    <text>待收货</text>
+  </view>
+  <view class="state">
+    <icon class="icon iconfont iconshinshopdaipingjia"></icon>
+    <text>待评价</text>
+  </view>
+  <view class="state">
+    <icon class="icon iconfont iconrefund"></icon>
+    <text>退款/退货</text>
+  </view>
+</view>
+<!-- 会员中心收货地址关于我们 -->
+<view class="member" bindtap="member">
+  <view class="memberLeft">
+    <icon class="icon iconfont iconhuiyuan2"></icon>
+    <text>会员中心</text>
+  </view>
+  <view class="memberRight">
+    <icon class="icon iconfont icontubiao-"></icon>
+  </view>
+</view>
+<view class="member" bindtap="address">
+  <view class="memberLeft">
+    <icon class="icon iconfont iconshinshopshouhuodizhi"></icon>
+    <text>收货地址</text>
+  </view>
+  <view class="memberRight">
+    <icon class="icon iconfont icontubiao-"></icon>
+  </view>
+</view>
+<view class="member">
+  <view class="memberLeft">
+    <icon class="icon iconfont iconguanyu"></icon>
+    <text>关于我们</text>
+  </view>
+  <view class="memberRight">
+    <icon class="icon iconfont icontubiao-"></icon>
+  </view>
+</view>

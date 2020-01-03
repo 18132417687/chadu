@@ -1,0 +1,39 @@
+<!--pages/article/article.wxml-->
+<!-- 学茶分类 -->
+<view class="studyTea">
+  <text class='{{tabIndex==1?"active":""}}' data-tabid='1' bindtap="studyTeaCategory">文章</text>
+  <text class='{{tabIndex==2?"active":""}}' data-tabid='2' bindtap="studyTeaCategory">视频</text>
+</view>
+<!-- 学茶分类内容 -->
+<!-- 文章 -->
+<view class="categoryContent" wx:if="{{tabIndex==1}}">
+  <view class="content" wx:for='{{articleList}}' wx:key="index" wx:for-index='index' bindtap="articledetail" data-articleid="{{item.article_id}}">
+    <view class="contentLeft">
+      <image src="http://localhost:80/chadutp/public{{item.article_img}}"></image>
+    </view>
+    <view class="contentRight">
+      <view class="contentRightTop">{{item.article_title}}</view>
+      <view class="contentRightbottom">
+        <view>查看{{item.article_read}}次</view>
+        <view>·</view>
+        <view>点赞{{item.article_zan}}次</view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 视频内容 -->
+<view class="categoryContent" wx:if="{{tabIndex==2}}">
+  <view class="content" wx:for='{{videoList}}' wx:key="index" wx:for-index='index' bindtap="videodetail" data-videoid="{{item.video_id}}">
+    <view class="contentLeft">
+      <video src="http://localhost:80/chadutp/public{{item.video_img}}"></video>
+    </view>
+    <view class="contentRight">
+      <view class="contentRightTop">{{item.video_title}}</view>
+      <view class="contentRightbottom">
+        <view>查看{{item.video_read}}次</view>
+        <view>·</view>
+        <view>点赞{{item.video_zan}}次</view>
+      </view>
+    </view>
+  </view>
+</view>

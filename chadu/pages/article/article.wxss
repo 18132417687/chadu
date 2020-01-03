@@ -1,0 +1,86 @@
+/* pages/article/article.wxss */
+/* 学茶分类 */
+.studyTea{
+  width: 100%;
+  height:96rpx;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2.5% 0 2.5%;
+  box-sizing: border-box;
+  border-bottom: 1px solid #efefef;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: #ffffff;
+}
+.studyTea text{
+  width: 50%;
+  height: 96rpx;
+  line-height: 96rpx;
+  text-align: center;
+  color: #406565;
+  font-size: 32rpx;
+}
+.active{
+  color: #406565;
+  font-size: 34rpx;
+  font-weight: bold;
+  border-bottom: 2px solid #406565;
+}
+/* 学茶分类内容 */
+.categoryContent{
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 96rpx;
+}
+.content{
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
+   padding: 20rpx 0 20rpx 0;
+  border-bottom:1px solid #efefef;  
+  box-sizing: border-box;
+}
+.contentLeft{
+  width: 35%;
+}
+.contentLeft image,.contentLeft video{
+  display: block;
+  width: 100%;
+  height: 180rpx;
+}
+.contentRight{
+  width: 65%;
+  /* height: 160rpx; */
+  padding-left: 15rpx;
+  box-sizing: border-box;
+  /* display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center; */
+}
+.contentRightTop{
+  width: 100%;
+  color: #333333;
+  font-size: 30rpx;
+}
+.contentRightBottom{
+  width: 100%;
+  
+}
+.contentRightbottom view{
+  float: left;
+  color: #6b7f80;
+  font-size: 26rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+
+}
+.contentRightbottom view:nth-of-type(2){
+  padding: 0 15rpx 0 15rpx;
+  box-sizing: border-box;
+}

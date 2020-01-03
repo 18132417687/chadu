@@ -1,0 +1,212 @@
+/* pages/my/my.wxss */
+
+/* 点击登录 */
+
+page {
+  background: #efefef;
+}
+
+.login {
+  width: 100%;
+}
+
+.bgImg {
+  display: block;
+  width: 100%;
+  height: 300rpx;
+}
+
+.center {
+  width: 90%;
+  margin: 0 auto;
+  background: #fff;
+  position: absolute;
+  top: 80rpx;
+  left: 5%;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 15rpx;
+}
+
+.peopleCenter {
+  /* width: 90%; */
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  padding: 70rpx 0 70rpx 20rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+}
+
+.peopleCenter image {
+  display: block;
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+}
+
+.peopleCenter button {
+  color: #333;
+  font-size: 28rpx;
+  background: #fff;
+}
+
+button::after {
+  border: none;
+  /* background: #ffffff; */
+}
+
+.clickLogin {
+  font-size: 28rpx;
+  color: #333;
+  /* background: #ffffff; */
+  padding: 0 0 0 20rpx;
+  box-sizing: border-box;
+}
+
+.memberCenter {
+  width: 180rpx;
+  background: #4d515a;
+  border-radius: 40rpx;
+  margin: 0 25rpx 0 0;
+}
+
+.memberCenter icon {
+  color: #fff;
+  /* padding: 0 10rpx 0 10rpx; */
+  box-sizing: border-box;
+  font-size: 26rpx;
+}
+
+.memberCenter icon:nth-of-type(1) {
+  padding: 0 10rpx 0 10rpx;
+  box-sizing: border-box;
+}
+
+.memberCenter text {
+  color: #fff;
+  font-size: 26rpx;
+  text-align: center;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+
+/* 我的订单 */
+
+.order {
+  width: 100%;
+  height: 80rpx;
+  background: #fff;
+  margin-top: 60rpx;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #efefef;
+  padding: 0 2.5% 0 2.5%;
+  box-sizing: border-box;
+}
+
+.myorder, .lookorder {
+  height: 80rpx;
+  line-height: 80rpx;
+}
+
+.myorder {
+  color: #333;
+}
+
+.lookorder {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+}
+
+.lookorder text, .lookorder icon {
+  color: #999;
+}
+
+.lookorder text {
+  font-size: 26rpx;
+}
+
+/* 订单状态 */
+
+.orderdetail {
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  margin-bottom: 30rpx;
+}
+
+.state {
+  width: 20%;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  padding: 10rpx 0 10rpx 0;
+  box-sizing: border-box;
+}
+
+.state icon {
+  margin: 0 auto;
+  font-size: 48rpx;
+  color: #333;
+}
+
+.state text {
+  display: block;
+  width: 100%;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+  color: 333333;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+
+/* 会员中心收货地址关于我们 */
+
+.member {
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2.5% 0 2.5%;
+  box-sizing: border-box;
+  background: #fff;
+  border: 1px solid #efefef;
+}
+
+.memberLeft {
+  height: 80rpx;
+  line-height: 80rpx;
+}
+
+.memberLeft icon {
+  margin: 0 auto;
+  color: #333;
+  font-size: 40rpx;
+}
+
+.memberLeft text {
+  padding-left: 10rpx;
+  box-sizing: border-box;
+}
+
+.memberRight {
+  height: 80rpx;
+  line-height: 80rpx;
+}
+
+.memberRight icon {
+  margin: 0 auto;
+  color: #999;
+}

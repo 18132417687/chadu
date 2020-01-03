@@ -1,0 +1,314 @@
+<!--pages/category/category.wxml-->
+<!-- 搜索框 -->
+<view class="searchOut">
+  <view class="search">
+    <icon class="icon iconfont iconsousuo"></icon>
+    <input type="text" style="color:#b7bbbb;font-size:32rpx" placeholder="请输入商品名称" placeholder-style="color:#b7bbbb;font-size:32rpx" bindblur='blur' value='{{keyWord}}' bindconfirm='goSearch' clearable></input>
+    <button bindtap="goSearch">搜索</button>
+  </view>
+</view>
+<!-- 页面切换 -->
+<view class="tab">
+  <view class="tabLeft">
+    <text class='{{tabIndex==1?"active":""}}' data-tabid='1' bindtap="tabNav">红茶</text>
+    <text class='{{tabIndex==2?"active":""}}' data-tabid='2' bindtap="tabNav">绿茶</text>
+    <text class='{{tabIndex==3?"active":""}}' data-tabid='3' bindtap="tabNav">白茶</text>
+    <text class='{{tabIndex==4?"active":""}}' data-tabid='4' bindtap="tabNav">黑茶</text>
+    <text class='{{tabIndex==5?"active":""}}' data-tabid='5' bindtap="tabNav">黄茶</text>
+    <text class='{{tabIndex==6?"active":""}}' data-tabid='6' bindtap="tabNav">乌龙茶</text>
+    <text class='{{tabIndex==7?"active":""}}' data-tabid='7' bindtap="tabNav">花茶</text>
+    <text class='{{tabIndex==8?"active":""}}' data-tabid='8' bindtap="tabNav">茶具</text>
+  </view>
+  <view class="tabRight" wx:if="{{tabIndex==item.category_id}}" wx:for="{{categoryList}}" wx:key="index" wx:for-index='index'>
+    <image src="http://localhost:80/chadutp/public{{item.category_img}}" class="categoryImg"></image>
+    <text class="teaName">{{item.category_name}}</text>
+    <view class="teaCategory">
+      <view class="teaEach" bindtap="goodslist" data-teaid='{{item.tea_id}}' wx:for="{{teaName}}" wx:key="index" wx:for-index='index'>
+        <image src="http://localhost:80/chadutp/public{{item.tea_img}}"></image>
+        <text>{{item.tea_name}}</text>
+      </view>
+    </view>
+  </view>
+  <!-- <view class="tabRight" wx:if="{{tabIndex==1}}">
+    <image src="http://a4.qpic.cn/psb?/V14ekMgQ3WNHfd/0jNAmfj2.QWjdcWcJISWMAoT8K3jep*HE0g2eBiYSP0!/m/dL8AAAAAAAAAnull&bo=kgKrAJICqwARBzA!&rf=photolist&t=5" class="categoryImg"></image>
+    <text class="teaName">绿茶</text>
+    <view class="teaCategory">
+      <view class="teaEach">
+        <image src="http://a3.qpic.cn/psb?/V14ekMgQ3WNHfd/tuiB3EW.uHUxvgBtSVPCGwMxUPksL2yUXn8GfJQtijM!/m/dLYAAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>西湖龙井</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a4.qpic.cn/psb?/V14ekMgQ3WNHfd/pNitGVUzonDVWvYw8ut72sSR8NpGbUVtGVV2llLplX0!/m/dFMBAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>黄竹白毫</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a2.qpic.cn/psb?/V14ekMgQ3WNHfd/t5wF6U6xujEzUnBtnQLujcXoDAmf*We1LJt6MIztLkw!/m/dEkBAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>双井绿</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a4.qpic.cn/psb?/V14ekMgQ3WNHfd/c1h.wsHOZKrGPUL2qCGdORhAkjiO57MI.GBhySvhBTg!/m/dL8AAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>慧明茶</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a2.qpic.cn/psb?/V14ekMgQ3WNHfd/PZdUdog6NWTK2INVCG3M5RjZKkGnwsP1x04C1ppM0o4!/m/dDUBAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>碧螺春</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a3.qpic.cn/psb?/V14ekMgQ3WNHfd/myCq.a9uUrrw7aHQU15JAb*92xfaprQSx1MkBA1zBIY!/m/dL4AAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>黄山毛峰</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a4.qpic.cn/psb?/V14ekMgQ3WNHfd/Oivrd.GXw7RwW7cq56DFltSlm9LYGECrezmLPqDRKcM!/m/dFMBAAAAAAAAnull&bo=ZABkAGQAZAARBzA!&rf=photolist&t=5"></image>
+        <text>天山绿茶</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a3.qpic.cn/psb?/V14ekMgQ3WNHfd/SUOxCBd6vdMkaSYINNHXd0TCKGQIEAh5Ehwv*TaGZ3c!/m/dL4AAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>西山茶</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a3.qpic.cn/psb?/V14ekMgQ3WNHfd/ybOyitdGbFkRoKTHpZeEJbGKKKjWBBho86LbX9E0SHI!/m/dL4AAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>竹叶青差</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a3.qpic.cn/psb?/V14ekMgQ3WNHfd/.3BHMuV2r*rw22bVHTrIyzMYSe.egUgTJpea7Ax..rs!/m/dFIBAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>都匀毛尖</text>
+      </view>
+    </view>
+  </view>
+  <view class="tabRight" wx:if="{{tabIndex==2}}">
+    <image src="http://a4.qpic.cn/psb?/V14ekMgQ3WNHfd/0jNAmfj2.QWjdcWcJISWMAoT8K3jep*HE0g2eBiYSP0!/m/dL8AAAAAAAAAnull&bo=kgKrAJICqwARBzA!&rf=photolist&t=5" class="categoryImg"></image>
+    <text class="teaName">白茶</text>
+    <view class="teaCategory">
+      <view class="teaEach">
+        <image src="http://a3.qpic.cn/psb?/V14ekMgQ3WNHfd/PT*QHEGELg67Lx6Nf21p1Xb6kGi2CA5eAOxERJgA3zg!/m/dLYAAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>银针白毫</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a2.qpic.cn/psb?/V14ekMgQ3WNHfd/RLbS1AZ2TvC6uJlRxACNCwiDRxIUPeZuTkmagMogn4A!/m/dDUBAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>上饶白茶</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a4.qpic.cn/psb?/V14ekMgQ3WNHfd/4mrGE6v0ob20UM8YqkFs0ktcyFTZ0MMvdkITngJQGi8!/m/dMMAAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>白牡丹茶</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a3.qpic.cn/psb?/V14ekMgQ3WNHfd/r5Et2LhZ0c0*lREg2IxkCToQIh2kNoVvv5M8CtlmxAU!/m/dL4AAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>贡眉</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a2.qpic.cn/psb?/V14ekMgQ3WNHfd/841jWrsJOyXMuNNei6*O272xH28o7GdxSq34SrWSddY!/m/dDUBAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>新工艺白茶</text>
+      </view>
+    </view>
+  </view>
+  <view class="tabRight" wx:if="{{tabIndex==3}}">
+    <image src="http://a4.qpic.cn/psb?/V14ekMgQ3WNHfd/0jNAmfj2.QWjdcWcJISWMAoT8K3jep*HE0g2eBiYSP0!/m/dL8AAAAAAAAAnull&bo=kgKrAJICqwARBzA!&rf=photolist&t=5" class="categoryImg"></image>
+    <text class="teaName">黑茶</text>
+    <view class="teaCategory">
+      <view class="teaEach">
+        <image src="http://a3.qpic.cn/psb?/V14ekMgQ3WNHfd/Ur9nGDrkANQIEkLK1HoIkGAKNcBahWQFcKGlWZuH90c!/m/dLYAAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>湖南黑茶</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a4.qpic.cn/psb?/V14ekMgQ3WNHfd/1WI60mPk0hCeVNtmclvIxZNvfLDofmACvgB3s1J.FLk!/m/dDcBAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>老青茶</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a1.qpic.cn/psb?/V14ekMgQ3WNHfd/6Nv1LdhDEtOFaFJXkosnICwxsN.E14Z8gMyrvq.ImiQ!/m/dLgAAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>四川边茶</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a1.qpic.cn/psb?/V14ekMgQ3WNHfd/e6W7AFAy2fNUcC.0GeQJ93wKIdPF3Wu7WaN0hF2tPOs!/m/dLgAAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>六堡散茶</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a4.qpic.cn/psb?/V14ekMgQ3WNHfd/5FCLc5lkJNA70oBurzQkoFb5AljzUP5CZyiRDyhqXec!/m/dL8AAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>普洱茶</text>
+      </view>
+    </view>
+  </view>
+  <view class="tabRight" wx:if="{{tabIndex==4}}">
+    <image src="http://a4.qpic.cn/psb?/V14ekMgQ3WNHfd/0jNAmfj2.QWjdcWcJISWMAoT8K3jep*HE0g2eBiYSP0!/m/dL8AAAAAAAAAnull&bo=kgKrAJICqwARBzA!&rf=photolist&t=5" class="categoryImg"></image>
+    <text class="teaName">黄茶</text>
+    <view class="teaCategory">
+      <view class="teaEach">
+        <image src="http://a3.qpic.cn/psb?/V14ekMgQ3WNHfd/CntLa5CilaYA5KuqzdnMZj6WrF8p*wGTOMOLaMyHdMQ!/m/dLYAAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>君山银针</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a1.qpic.cn/psb?/V14ekMgQ3WNHfd/NpI43mX4KLf6QE0s62aV0KmbjuE09EyCeciUNaU1mS0!/m/dLgAAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>蒙顶黄芽</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a4.qpic.cn/psb?/V14ekMgQ3WNHfd/Lwppe7iZmyvpeNiIF2wzfmwPp71SbkM9W4NHaPwSbRw!/m/dPMAAAAAAAAAnull&bo=DAHJAAwByQADByI!&rf=photolist&t=5"></image>
+        <text>北港毛尖</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a4.qpic.cn/psb?/V14ekMgQ3WNHfd/7Sn9ryjFTvj4Oxw6YGjBcJsHBRfwtylC7GJn2yPX5WM!/m/dE8BAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>鹿苑毛尖</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a1.qpic.cn/psb?/V14ekMgQ3WNHfd/GIt64AjV6ztBl17ZVlXI.eLTBTMUVM.16*tRjy193hM!/m/dIQAAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>霍山黄芽</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a3.qpic.cn/psb?/V14ekMgQ3WNHfd/ul3hpM34Wf4hBTywMxbsaTj5qqCtJn64Dez9ZLVDtSk!/m/dDYBAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>沩江白毛尖</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a4.qpic.cn/psb?/V14ekMgQ3WNHfd/DdjV.Se3FNHJRZ9Rn3IRz83FVfR*bA.6F.o3gn3KFOU!/m/dE8BAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>温州黄汤</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a1.qpic.cn/psb?/V14ekMgQ3WNHfd/MX9aXy2aw6wohnBOik6qmY.NMClWnfulCwYpox2WhcA!/m/dAQBAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>皖西黄大茶</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a4.qpic.cn/psb?/V14ekMgQ3WNHfd/7jbJWChdmKd8dqKP4Xsq2gGG69.ITk3cR6F1TjIa.FM!/m/dIMAAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>广东大叶青</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a4.qpic.cn/psb?/V14ekMgQ3WNHfd/ck.0vWc17oZnrXYCIuHp3tPIAx0RWGCmzmLjbCCM3hE!/m/dPMAAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>海马宫茶</text>
+      </view>
+    </view>
+  </view>
+  <view class="tabRight" wx:if="{{tabIndex==5}}">
+    <image src="http://a4.qpic.cn/psb?/V14ekMgQ3WNHfd/0jNAmfj2.QWjdcWcJISWMAoT8K3jep*HE0g2eBiYSP0!/m/dL8AAAAAAAAAnull&bo=kgKrAJICqwARBzA!&rf=photolist&t=5" class="categoryImg"></image>
+    <text class="teaName">乌龙茶</text>
+    <view class="teaCategory">
+      <view class="teaEach">
+        <image src="http://a3.qpic.cn/psb?/V14ekMgQ3WNHfd/llX67jC2kBUuWV939MnswQjs*hqJ*.kyJp1fyOXq8C0!/m/dL4AAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>武夷岩茶</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a3.qpic.cn/psb?/V14ekMgQ3WNHfd/pJOvSPGFDwEibqOxQhAwpdidmPKO8gE.r74MzJHf2UM!/m/dD4BAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>武夷肉桂</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a3.qpic.cn/psb?/V14ekMgQ3WNHfd/jhpSFldzCzA4EFey0wo8RWfRbuUv4H6C*Rc3Ct8QzHo!/m/dD4BAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>闽北水仙</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a4.qpic.cn/psb?/V14ekMgQ3WNHfd/d3DNcWp3M*uJ5X2YhpZbo7XEkgse1.A2xzZ13E.khEQ!/m/dE8BAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>铁观音</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a3.qpic.cn/psb?/V14ekMgQ3WNHfd/2FWuUZW1FGOsdFsyU5SIMZvY2XMT5cbEbBH6g2Pi7aY!/m/dLYAAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>铁罗汉</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a1.qpic.cn/psb?/V14ekMgQ3WNHfd/Tg.feeod60YppC4wpqGKYZ3Xj6mBe5p7uXqT.ZS15yU!/m/dLgAAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>黄金桂</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a3.qpic.cn/psb?/V14ekMgQ3WNHfd/.A.uV5PGNZaU3RFTIcJDaN63eb5Qf331KYAisDF67SM!/m/dLYAAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>永春佛手</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a3.qpic.cn/psb?/V14ekMgQ3WNHfd/n3NoT7LTNcMh3sYeW09DFApsXdk0A7VxGHhu.tMxwTQ!/m/dL4AAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>安溪色种</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a4.qpic.cn/psb?/V14ekMgQ3WNHfd/Da4hh6AikPPpYLgUv*i2KNXyjI4q*8fdK.N21pMTtyY!/m/dFMBAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>凤凰水仙</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a3.qpic.cn/psb?/V14ekMgQ3WNHfd/0s2Lw6GkxLpnHTrzpaV2.P37sTQsFX3mwrkcKZKtkVU!/m/dLYAAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>大红袍</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a3.qpic.cn/psb?/V14ekMgQ3WNHfd/EtVtcSQnysioxkD7tPYo*J3dKX8XHevST238HqDA6VE!/m/dE4BAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>台湾乌龙</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a1.qpic.cn/psb?/V14ekMgQ3WNHfd/2PQ717iusFA*Bam7apmCKYBH1KieERQ4Fx*8uVOlrw4!/m/dDQBAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>包种茶</text>
+      </view>
+    </view>
+  </view>
+  <view class="tabRight" wx:if="{{tabIndex==6}}">
+    <image src="http://a4.qpic.cn/psb?/V14ekMgQ3WNHfd/0jNAmfj2.QWjdcWcJISWMAoT8K3jep*HE0g2eBiYSP0!/m/dL8AAAAAAAAAnull&bo=kgKrAJICqwARBzA!&rf=photolist&t=5" class="categoryImg"></image>
+    <text class="teaName">花茶</text>
+    <view class="teaCategory">
+      <view class="teaEach">
+        <image src="http://a1.qpic.cn/psb?/V14ekMgQ3WNHfd/jN4sNFfEq6W3ONA0LAnSDfzTxMuf2e50kf9cErYZ4ug!/m/dFQBAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>茉莉花茶</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a4.qpic.cn/psb?/V14ekMgQ3WNHfd/y.L*cvkHKosvDMzA13pwwFB6DEMarqzAIQB9QF1tZ4s!/m/dFMBAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>珠兰花茶</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a4.qpic.cn/psb?/V14ekMgQ3WNHfd/9aHnOXFGBilmqzPmEHefXDURR4fOykPLI0IhQHNLySA!/m/dFMBAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>桂花茶</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a3.qpic.cn/psb?/V14ekMgQ3WNHfd/YhaH.1RsiGlm82JIc4outvKxUfE9IhvbIEMOmpy.U8o!/m/dL4AAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>金银花茶</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a1.qpic.cn/psb?/V14ekMgQ3WNHfd/UA7lngo2TmI9IMKZu8wCBviQbFo2PpAG4rT1XiDk0wU!/m/dLgAAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>白兰花茶</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a4.qpic.cn/psb?/V14ekMgQ3WNHfd/D*n6VRRoEUNte4.cu9fPdRNeZlRcKfa*ZkSBlAakC*I!/m/dL8AAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>玫瑰花茶</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a1.qpic.cn/psb?/V14ekMgQ3WNHfd/EQDFT9gJkPh0v.msejWXacHVYscsgd92vcwfu4HxF1s!/m/dLgAAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>洛神花茶</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a3.qpic.cn/psb?/V14ekMgQ3WNHfd/KG1jrlKk.hjnkI0IKeAw99XazSS10wnmiCerZjxkM94!/m/dLYAAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>菊花茶</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a1.qpic.cn/psb?/V14ekMgQ3WNHfd/v49xoeKSf5VuubYVLIWw.4kWuuNDt3mfVj*GwgJCDDI!/m/dIQAAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>柚花茶</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a2.qpic.cn/psb?/V14ekMgQ3WNHfd/XuGVNbCR3ADt9ARVzsWWfkqbBVPDTMO5GUgtclWuQoY!/m/dEkBAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>花草茶</text>
+      </view>
+       <view class="teaEach">
+        <image src="http://a1.qpic.cn/psb?/V14ekMgQ3WNHfd/KMv0VdJjNcIsvjgm5nthrTOxNCdTyN0WQKpSELKIZGE!/m/dEABAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>玳玳花茶</text>
+      </view>
+       <view class="teaEach">
+        <image src="http://a4.qpic.cn/psb?/V14ekMgQ3WNHfd/XuFZKu*6N4gn6Rel.RO7GzeEIpNsAvPbJ02*MVNJpQE!/m/dPMAAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>小果金花茶</text>
+      </view>
+    </view>
+  </view>
+<view class="tabRight" wx:if="{{tabIndex==7}}">
+    <image src="http://a4.qpic.cn/psb?/V14ekMgQ3WNHfd/0jNAmfj2.QWjdcWcJISWMAoT8K3jep*HE0g2eBiYSP0!/m/dL8AAAAAAAAAnull&bo=kgKrAJICqwARBzA!&rf=photolist&t=5" class="categoryImg"></image>
+    <text class="teaName">茶具</text>
+    <view class="teaCategory">
+      <view class="teaEach">
+        <image src="http://a1.qpic.cn/psb?/V14ekMgQ3WNHfd/Lr*fCBmR8vpciyJolZlvim8feWy*LMiu6Vj1v*DYIwU!/m/dFQBAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>瓷器茶具</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a4.qpic.cn/psb?/V14ekMgQ3WNHfd/KuNgtfhSIeD*0FJWKb64WZqzbJ4McO9eFCSW4h4Ji9Y!/m/dMMAAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>紫砂茶具</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a3.qpic.cn/psb?/V14ekMgQ3WNHfd/yoIemwAg5OtLQKLT62Pr4on4joMFwaEOSEsD39mUDAE!/m/dL4AAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>金属茶具</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a4.qpic.cn/psb?/V14ekMgQ3WNHfd/m9HxCKBpWHGjtPWXOk2YPVviHfJZD1RSMZkhYffmFhc!/m/dL8AAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>竹木茶具</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a4.qpic.cn/psb?/V14ekMgQ3WNHfd/8tRsB*wb0LxU21..AgYzueV56rauXmGrrsAdm5bElZg!/m/dL8AAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>玻璃茶具</text>
+      </view>
+      <view class="teaEach">
+        <image src="http://a4.qpic.cn/psb?/V14ekMgQ3WNHfd/aOpP4cyGNm0HDWpfFZaXBGg8UUplVEyftn9zET0PQJs!/m/dIMAAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+        <text>玉质茶具</text>
+      </view>
+    </view>
+  </view> -->
+</view>

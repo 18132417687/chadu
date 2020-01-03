@@ -1,0 +1,55 @@
+<!--pages/goodslist/goodslist.wxml-->
+<!-- 搜索框 -->
+<view class="searchOut">
+  <view class="search">
+    <icon class="icon iconfont iconsousuo"></icon>
+    <input type="text" style="color:#b7bbbb;font-size:32rpx" placeholder="请输入商品名称" placeholder-style="color:#b7bbbb;font-size:32rpx" bindfocus bindconfirm></input>
+    <button>搜索</button>
+  </view>
+</view>
+<!-- 商品列表 -->
+<scroll-view class="firstSelectzong" scroll-y lower-threshold="96" style="height:{{listH}}px">
+  <view class="firstSelect">
+    <view class="firstSelectLeft" wx:for="{{teagoodsList}}" wx:key="index" wx:for-index='index'>
+      <image src="http://localhost:80/chadutp/public{{item.goods_img}}" data-goodsid='{{item.goods_id}}' bindtap="goodsdetail" class="firstSelectLeftimg"></image>
+      <text data-goodsid='{{item.goods_id}}' bindtap="goodsdetail" class="firstSelectLefttext">{{item.goods_title}}</text>
+      <view class="firstSelectPrice">
+        <text class="firstSelectPrice" data-goodsid='{{item.goods_id}}' bindtap="goodsdetail">￥{{item.goods_price}}</text>
+        <icon class="icon iconfont icongouwuche2" data-goodsid='{{item.goods_id}}' bindtap="addCars" data-goodsdata="{{item}}" data-index='{{index}}'></icon>
+      </view>
+      <!-- 加入购物车遮罩层 -->
+      <!--屏幕背景变暗的背景  -->
+      <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+      <!--加入购物车弹出框  -->
+      <view animation="{{animationData}}" class="layout" wx:if="{{showModalStatus}}" wx:if="{{TipStatus}}">
+        <form bindsubmit="sure" data-goodsid="{{item.goods_id}}" data-img="{{item.goods_img}}" data-price="{{item.goods_price}}" data-title="{{item.goods_title}}">
+          <view class="layoutGoods">
+            <view class="layoutDetail">
+              <image src="http://localhost:80/chadutp/public{{img}}"></image>
+              <view class="layoutPrice">
+                <text>￥{{price}}</text>
+                <text>{{title}}</text>
+              </view>
+            </view>
+            <view class="closeLayout" bindtap="hiddenmask">
+              <icon class="icon iconfont iconcuowu"></icon>
+            </view>
+          </view>
+          <view class="layoutSpecific">
+            <text>规格</text>
+            <text>默认</text>
+          </view>
+          <view class="layoutnum">
+            <text>数量</text>
+            <view class="addnum">
+              <view bindtap="reduce" class="min" data-index="{{index}}">-</view>
+              <view class="number">{{num}}</view>
+              <view bindtap="add" class="add" data-index="{{index}}">+</view>
+            </view>
+          </view>
+          <button class="quickAdd" form-type='submit'>立即加入</button>
+        </form>
+      </view>
+    </view>
+  </view>
+</scroll-view>

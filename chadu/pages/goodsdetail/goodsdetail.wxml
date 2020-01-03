@@ -1,0 +1,128 @@
+<!--pages/goodsdetail/goodsdetail.wxml-->
+<!-- 轮播图 -->
+<swiper indicator-dots="true" autoplay="true" interval="1500" indicator-color="#cbd3d3" indicator-active-color="#406565">
+  <block>
+    <swiper-item>
+      <image src="http://localhost:80/chadutp/public{{goodsDetail.goods_banner1}}" class="slide-image" width="355" height="150" />
+    </swiper-item>
+    <swiper-item>
+      <image src="http://localhost:80/chadutp/public{{goodsDetail.goods_banner2}}" class="slide-image" width="355" height="150" />
+    </swiper-item>
+    <swiper-item>
+      <image src="http://localhost:80/chadutp/public{{goodsDetail.goods_banner3}}" class="slide-image" width="355" height="150" />
+    </swiper-item>
+  </block>
+</swiper>
+<!-- 商品描述 -->
+<view class="goodsdescription">
+  <text class="title">{{goodsDetail.goods_title}}</text>
+  <text class="price">￥{{goodsDetail.goods_price}}</text>
+  <view class="origprice">
+    <text>原价:</text>
+    <text>￥{{goodsDetail.goods_reprice}}</text>
+  </view>
+  <text class="num">销量:{{goodsDetail.goods_number}}</text>
+</view>
+<!-- 发货 -->
+<view class="postion">
+  <view class="place">
+    <text>发货</text>
+    <icon class="icon iconfont iconiconfontzhizuobiaozhun16"></icon>
+    <text>{{goodsDetail.goods_address}}</text>
+    <text>|</text>
+  </view>
+  <view class="express">
+    <text>快递:</text>
+    <text>0.00</text>
+  </view>
+
+</view>
+<!-- 保障 -->
+<view class="guarantee">
+  <view class="quailty">
+    <icon class="icon iconfont iconxuanzhong"></icon>
+    <text>正品保障</text>
+  </view>
+  <view class="quick">
+    <icon class="icon iconfont iconxuanzhong"></icon>
+    <text>急速发货</text>
+  </view>
+</view>
+<!-- 商品详情 -->
+<view class="goodsdetail">
+  <view class="goodsdetailin">
+    <text></text>
+    <text>商品详情</text>
+    <text></text>
+  </view>
+  <view class="goodsimgs">
+    <image src="http://localhost:80/chadutp/public{{goodsDetail.goods_img1}}"></image>
+    <image src="http://localhost:80/chadutp/public{{goodsDetail.goods_img2}}"></image>
+    <image src="http://localhost:80/chadutp/public{{goodsDetail.goods_img3}}"></image>
+  </view>
+</view>
+<!-- 底部部分 -->
+<view class="bottom" data-goodsid="{{item.goods_id}}">
+  <view class="service">
+    <view class="home" bindtap="mask">
+      <icon class="icon iconfont iconkefu"></icon>
+      <text>客服</text>
+    </view>
+    <view class="maskOut" style="height:{{wh}}px" wx:if="{{mask}}">
+      <view class="maskIn" style="height:{{wh}}px"></view>
+      <view class="mastContent" style="top:{{(wh-325)/2}}px">
+        <view class="maskFont">
+          <view class="maskTitle">茶都服务中心</view>
+          <view class="maskService">致力于为您提供贴心服务</view>
+          <view class="maskTel">服务电话：123456789</view>
+          <view class="maskDate">电话接待时间：9：00~15：00</view>
+        </view>
+        <view class="tubiao">
+          <icon class="icon iconfont iconcuo" bindtap="hiddenMask"></icon>
+        </view>
+      </view>
+    </view>
+
+  </view>
+  <!-- 加入购物车按钮 -->
+  <view class="car" bindtap="car">
+    <icon class="icon iconfont icongouwuche2"></icon>
+    <text>购物车</text>
+  </view>
+  <!-- 点击我可以看到底部弹框的出现 -->
+  <view class="addcar" bindtap="addCars">加入购物车</view>
+  <view class="buy" data-info="{{goodsDetail}}" bindtap="payment">立即购买</view>
+  <!-- 加入购物车遮罩层，屏幕背景变暗的背景 -->
+  <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+  <!--加入购物车弹出框  -->
+  <view animation="{{animationData}}" class="layout" wx:if="{{showModalStatus}}" wx:if="{{TipStatus}}">
+    <form bindsubmit="sure" data-info="{{goodsDetail}}">
+      <view class="layoutGoods">
+        <view class="layoutDetail">
+          <image src="http://localhost:80/chadutp/public{{goodsDetail.goods_img}}"></image>
+          <view class="layoutPrice">
+          <text>{{goodsDetail.goods_title}}</text>
+            <text>￥{{goodsDetail.goods_price}}</text>
+          </view>
+        </view>
+        <view class="closeLayout" bindtap="hiddenmask">
+          <icon class="icon iconfont iconcuowu"></icon>
+        </view>
+      </view>
+      <view class="layoutSpecific">
+        <text>规格</text>
+        <text>默认</text>
+      </view>
+      <view class="layoutnum">
+        <text>数量</text>
+        <view class="addnum">
+          <view bindtap="reduce" class="min" data-index="{{index}}">-</view>
+          <view class="number">{{num}}</view>
+          <view bindtap="add" class="add" data-index="{{index}}">+</view>
+        </view>
+      </view>
+      <button class="quickAdd" form-type='submit'>立即加入</button>
+    </form>
+  </view>
+
+</view>

@@ -1,0 +1,50 @@
+<!--pages/address/address.wxml-->
+<block wx:if="{{show}}">
+  <view class="empty">
+    <icon class="icon iconfont iconshinshopshouhuodizhi"></icon>
+    <text>一个收货地址都没有</text>
+    <text>快去添加收货地址，买买买吧！</text>
+    <button bindtap="addaddress">添加收货地址</button>
+  </view>
+</block>
+<!-- 用户收货地址 -->
+<block wx:else>
+  <view class="zong">
+    <view class="userAddress" wx:for="{{addressList}}" wx:key="index" wx:for-index='index'>
+      <view class="userInfo"  data-index="{{index}}" data-info="{{addressList}}" catchtap="selectaddress">
+        <view class="username">
+          <text>收货人：{{item.people}}</text>
+          <text>{{item.phone}}</text>
+        </view>
+        <view class="address">收货地址：{{item.address}}{{item.detailaddress}}</view>
+      </view>
+      <view class="editAddress">
+        <view class="default" wx:if="{{index == defaultaddress || selected}}"  bindtap="selectList" data-index="{{index}}">
+          <!-- <radio-group class="radio-group" bindchange="radioChange">
+  <label class="radio">
+    <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+  </label>
+</radio-group> -->
+          <icon type="success" color="#ec762f" size="20"></icon>
+          <text>默认地址</text>
+        </view>
+        <view class="nodefault" wx:else bindtap="selectList" data-index="{{index}}">
+          <icon type="circle" size="20"></icon>
+          <text>默认地址</text>
+        </view>
+        <view class="edit">
+          <view class="edita" bindtap="editaddress" data-index="{{index}}">
+            <icon class="icon iconfont iconbianji"></icon>
+            <text>编辑</text>
+          </view>
+          <view class="delete" bindtap="deladdress" data-index="{{index}}">
+            <icon class="icon iconfont iconweb-icon- "></icon>
+            <text>删除</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 底部添加新地址 -->
+    <view class="bottom" bindtap="addaddress">添加新收货地址</view>
+  </view>
+</block>

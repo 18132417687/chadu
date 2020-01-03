@@ -1,0 +1,66 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/article/article",
+    "pages/my/my",
+    "pages/address/address",
+    "pages/addaddress/addaddress",
+    "pages/paylist/paylist",
+    "pages/payment/payment",
+    "pages/car/car",
+    "pages/articledetail/articledetail",
+    "pages/category/category",
+    "pages/goodslist/goodslist",
+    "pages/goodsdetail/goodsdetail",
+    "pages/member/member",
+    "pages/service/service",
+    "pages/editaddress/editaddress",
+    "pages/videodetail/videodetail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#406565",
+    "navigationBarTitleText": "茶都商城",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#6b7f80",
+    "selectedColor": "#406565",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "pages/images/home.png",
+        "selectedIconPath": "pages/images/homeselected.png"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "text": "分类",
+        "iconPath": "pages/images/category.png",
+        "selectedIconPath": "pages/images/categoryselected.png"
+      },
+      {
+        "pagePath": "pages/article/article",
+        "text": "学茶",
+        "iconPath": "pages/images/article.png",
+        "selectedIconPath": "pages/images/articleselected.png"
+      },
+      {
+        "pagePath": "pages/car/car",
+        "text": "购物车",
+        "iconPath": "pages/images/car.png",
+        "selectedIconPath": "pages/images/carselected.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "pages/images/my.png",
+        "selectedIconPath": "pages/images/myselected.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "van-notice-bar": "@vant/weapp/notice-bar"
+  }
+}

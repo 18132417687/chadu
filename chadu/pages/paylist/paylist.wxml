@@ -1,0 +1,29 @@
+<!--pages/paylist/paylist.wxml-->
+<block wx:if="{{show}}">
+  <view class="empty">
+    <icon class="icon iconfont icondingdan"></icon>
+    <text>一个订单都没有</text>
+    <text>快去和我一起买买买吧！</text>
+    <button bindtap="around">去逛逛</button>
+  </view>
+</block>
+<!-- 商品信息 -->
+<block wx:else>
+  <view class="goodsInfo" wx:for="{{paymentList}}" wx:key="index" wx:for-index='index'
+>
+    <text class="goodsTitle">自营平台</text>
+    <view class="goods">
+      <view class="img">
+        <image src="http://localhost:80/chadutp/public{{item.goods_img}}"></image>
+      </view>
+      <view class="goosDetail">
+        <text>{{item.goods_title}}</text>
+        <text>规格：默认</text>
+        <view class="goodsPrice">
+          <view>数量：x{{item.num}}</view>
+          <view>单价：￥{{item.goods_price}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>
