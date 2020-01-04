@@ -40,48 +40,53 @@ page {
   font-size: 28rpx;
 }
 
-.peopleCenter image {
-  display: block;
-  width: 96rpx;
-  height: 96rpx;
-  border-radius: 50%;
+.loginImg {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 100%;
+  overflow: hidden;
 }
 
-.peopleCenter button {
+.clickLogin {
   color: #333;
-  font-size: 28rpx;
+  font-size: 30rpx;
   background: #fff;
+  margin-left: 10px;
 }
 
-button::after {
+/* button::after {
   border: none;
-  /* background: #ffffff; */
 }
 
 .clickLogin {
   font-size: 28rpx;
   color: #333;
-  /* background: #ffffff; */
   padding: 0 0 0 20rpx;
   box-sizing: border-box;
-}
+} */
 
 .memberCenter {
+  height: 30px;
   width: 180rpx;
   background: #4d515a;
   border-radius: 40rpx;
-  margin: 0 25rpx 0 0;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
 }
 
 .memberCenter icon {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
   color: #fff;
-  /* padding: 0 10rpx 0 10rpx; */
   box-sizing: border-box;
+
   font-size: 26rpx;
 }
 
 .memberCenter icon:nth-of-type(1) {
-  padding: 0 10rpx 0 10rpx;
+  padding: 0 10rpx 0 10rpx; 
   box-sizing: border-box;
 }
 

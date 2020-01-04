@@ -4,13 +4,14 @@
   <image src="http://a1.qpic.cn/psb?/V14ekMgQ3WNHfd/AGWz6datZB05F0JWnZJ1sLa3FdgkxFwuecNmJzqyui0!/m/dFQBAAAAAAAAnull&bo=7gIsAe4CLAEDByI!&rf=photolist&t=5" class="bgImg"></image>
   <view class="center">
     <view class="peopleCenter">
-      <image wx:if="{{loginStatus}}" src="http://a4.qpic.cn/psb?/V14ekMgQ3WNHfd/h4jnGqNxpN8cOU2ZncWEqhh9OUlICIhOuVuzV1RejEA!/m/dMMAAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
+      <open-data type='userAvatarUrl' class="loginImg"></open-data>
+      <open-data type='userNickName' class="clickLogin"></open-data>
+      <!-- <image wx:if="{{loginStatus}}" src="http://a4.qpic.cn/psb?/V14ekMgQ3WNHfd/h4jnGqNxpN8cOU2ZncWEqhh9OUlICIhOuVuzV1RejEA!/m/dMMAAAAAAAAAnull&bo=ZABkAGQAZAADByI!&rf=photolist&t=5"></image>
       <image wx:else src="{{userInfo.avatarUrl}}" class="loginImg"></image>
       <button wx:if="{{loginStatus}}" open-type="getUserInfo" bindgetuserinfo="login" class="clickLogin"> 点击授权登录账号</button>
-      <button wx:else class="clickLogin">{{userInfo.nickName}}</button>
+      <button wx:else class="clickLogin">{{userInfo.nickName}}</button> -->
     </view>
     <!-- <text>点击授权登录账号</text> -->
-
     <view class="memberCenter" bindtap="member">
       <icon class="icon iconfont iconhuiyuan1"></icon>
       <text>银卡会员</text>

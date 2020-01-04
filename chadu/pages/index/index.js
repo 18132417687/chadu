@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
+const R = require("../../utils/util.js").R
 let that;
 Page({
 
@@ -379,6 +380,10 @@ Page({
     }
 
   },
+  getCode:function(){
+    // wx.showLoading({ title: '正在鉴权...', mask: true })
+
+  },
 
 
 
@@ -386,7 +391,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    that = this;
+   let that = this;
+    that.getCode();
+    wx.login({
+      success:function(res){
+        console.log(res)
+        // that.setData({
+        //   code:res.code
+        // })
+      }
+    })
     //轮播图接口
     wx.request({
         url: app.globalData.appUrl + 'banner/index',
@@ -446,7 +460,13 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {},
+  onShow: function() {
+    var that = this;
+    console.log(123456)
+
+    R.login();
+
+  },
 
   /**
    * 生命周期函数--监听页面隐藏

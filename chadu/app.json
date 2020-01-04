@@ -15,7 +15,8 @@
     "pages/member/member",
     "pages/service/service",
     "pages/editaddress/editaddress",
-    "pages/videodetail/videodetail"
+    "pages/videodetail/videodetail",
+    "pages/login/login"
   ],
   "window": {
     "backgroundTextStyle": "light",
