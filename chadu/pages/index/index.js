@@ -401,6 +401,23 @@ Page({
         // })
       }
     })
+    wx.request({
+      url: app.globalData.appUrl + 'user/info',
+      method: 'POST',
+      data: {
+      },
+      success(res) {
+        console.log(123456)
+        console.log(res);
+        if (res.data.code == 401) {
+          R.login();
+          // wx.navigateTo({
+          //   url: '/pages/login/login',
+          // })
+          // console.log(1221)
+        }
+      }
+    })
     //轮播图接口
     wx.request({
         url: app.globalData.appUrl + 'banner/index',
@@ -461,10 +478,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    var that = this;
-    console.log(123456)
-
-    R.login();
+    
 
   },
 

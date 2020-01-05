@@ -73,6 +73,7 @@ page {
   display: flex;
   flex-flow: row;
   align-items: center;
+  margin-right: 10px;
 }
 
 .memberCenter icon {

@@ -14,7 +14,7 @@ function formatTime(date) {
 let R = {
   login() {//验证登录
     return new Promise((resolve, reject) => {
-      if (wx.getStorageSync('openId') == "" || wx.getStorageSync('userId') == "") {
+      if (wx.getStorageSync('openId') == "" || wx.getStorageSync('id') == "") {
         wx.showModal({
           title: '提示',
           content: '必须要授权登录才能进行操作，是否授权登录',
@@ -29,7 +29,6 @@ let R = {
               wx.navigateTo({
                 url: '/pages/login/login',
               })
-
             } else if (res.cancel) {
               this.login()
             }
