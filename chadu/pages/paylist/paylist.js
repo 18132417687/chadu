@@ -9,6 +9,7 @@ Page({
 
   },
   nopaylist: function() {
+    var that = this;
     //判断显示的收货地址背景是否为空
     if (that.data.paymentList.length == 0) {
       that.setData({
@@ -49,6 +50,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    var that = this;
     that.nopaylist();
   },
 

@@ -14,6 +14,7 @@ Page({
   },
   //显示遮罩层
   mask: function() {
+    var that = this;
     that.setData({
       mask: true
     })
@@ -21,6 +22,7 @@ Page({
   },
   //隐藏遮罩层
   hiddenMask: function() {
+    var that = this;
     // console.log(e);
     that.setData({
       mask: false
@@ -57,6 +59,7 @@ Page({
   },
   //隐藏遮罩层
   hiddenmask: function() {
+    var that = this;
     //隐藏遮罩层
     var animation = wx.createAnimation({
       duration: 200,
@@ -115,6 +118,7 @@ Page({
   },
   //隐藏对话框
   hideModal: function() {
+    var that = this;
     // 隐藏遮罩层
     var animation = wx.createAnimation({
       duration: 200,
@@ -145,6 +149,7 @@ Page({
   },
   //立即加入
   sure: function(e) {
+    var that = this;
     // console.log(e.currentTarget.dataset.info);
     e.currentTarget.dataset.info.num = that.data.num; //数量增加、减少赋值给info.num
     // console.log(e.currentTarget.dataset.info.num);
@@ -211,7 +216,8 @@ Page({
   },
   //立即购买
   payment: function(e) {
-    console.log(e)
+    // console.log(e)
+    var that = this;
     var detailInfo = e.currentTarget.dataset.info;
     e.currentTarget.dataset.info.num = that.data.num; //数量增加、减少赋值给info.num
     // var num = detailInfo[index].num;
@@ -229,7 +235,7 @@ Page({
    */
   onLoad: function(options) {
     that = this;
-    console.log(options)
+    // console.log(options)
     wx.request({
       url: app.globalData.appUrl + 'detail/index',
       method: 'POST',
@@ -238,7 +244,7 @@ Page({
         goods_id: options.goods_id
       },
       success(res) {
-        console.log(res);
+        // console.log(res);
         if (res.data.code == 200) {
           that.setData({
             goodsDetail: res.data.data
@@ -280,6 +286,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    var that = this;
     that.setData({
       mask: false
     })

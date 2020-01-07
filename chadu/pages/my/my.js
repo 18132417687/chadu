@@ -9,24 +9,24 @@ Page({
     loginStatus: true // 未登录
   },
   //点击登录
-  login: function(e) {
-    console.log(e);
-    that.setData({
-      userInfo: {
-        avatarUrl: e.detail.userInfo.avatarUrl,
-        nickName: e.detail.userInfo.nickName
-      }
-    })
-    wx.showToast({
-      title: '登录成功！',
-      mask: true,
-      duration: 1500
-    })
-    that.setData({
-      loginStatus: false
-    })
-    wx.setStorageSync('userInfo', that.data.userInfo)
-  },
+  // login: function(e) {
+  //   console.log(e);
+  //   that.setData({
+  //     userInfo: {
+  //       avatarUrl: e.detail.userInfo.avatarUrl,
+  //       nickName: e.detail.userInfo.nickName
+  //     }
+  //   })
+  //   wx.showToast({
+  //     title: '登录成功！',
+  //     mask: true,
+  //     duration: 1500
+  //   })
+  //   that.setData({
+  //     loginStatus: false
+  //   })
+  //   wx.setStorageSync('userInfo', that.data.userInfo)
+  // },
 
   //跳转会员页面
   member: function() {
@@ -42,7 +42,7 @@ Page({
   },
   //跳转查看全部订单页面
   paylist:function(e){
-    console.log(e)
+    // console.log(e)
     wx.navigateTo({
       url: '../paylist/paylist',
     })

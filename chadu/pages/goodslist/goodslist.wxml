@@ -3,8 +3,8 @@
 <view class="searchOut">
   <view class="search">
     <icon class="icon iconfont iconsousuo"></icon>
-    <input type="text" style="color:#b7bbbb;font-size:32rpx" placeholder="请输入商品名称" placeholder-style="color:#b7bbbb;font-size:32rpx" bindfocus bindconfirm></input>
-    <button>搜索</button>
+    <input type="text" style="color:#b7bbbb;font-size:32rpx" placeholder="请输入商品名称" placeholder-style="color:#b7bbbb;font-size:32rpx" bindblur='blur' value='{{keyWord}}' bindconfirm='goSearch' clearable></input>
+    <button bindtap="goSearch">搜索</button>
   </view>
 </view>
 <!-- 商品列表 -->

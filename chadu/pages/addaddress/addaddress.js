@@ -25,7 +25,7 @@ Page({
   //用户名验证
   peoplename: function(e) {
     let that = this;
-    console.log(e)
+    // console.log(e)
     that.setData({
       userName: e.detail.value
     })
@@ -33,7 +33,7 @@ Page({
   // 手机号验证
   blurPhone: function(e) {
     let that = this;
-    console.log(e)
+    // console.log(e)
     that.setData({
       mobile: e.detail.value
     })
@@ -44,7 +44,7 @@ Page({
     that.setData({
       detailaddress:e.detail.value
     })
-    console.log(e)
+    // console.log(e)
   },
   //点击保存地址按钮
   save: function(e) {
@@ -96,7 +96,7 @@ Page({
       })
       return false;
     } else {
-      console.log(e)
+      // console.log(e)
       var people = e.detail.value.people;
       var phone = e.detail.value.phone;
       var address = e.detail.value.address;

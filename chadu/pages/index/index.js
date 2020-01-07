@@ -16,15 +16,15 @@ Page({
     value: '',
   },
   blur(e) {
-    console.log(e)
+    // console.log(e)
     this.data.value = e.detail.value
   },
   // //搜索按钮
   goSearch: function(e) {
-    console.log(e)
+    // console.log(e)
     var that = this;
     if (this.data.value) {
-      console.log(this.data.value)
+      // console.log(this.data.value)
       wx.request({
         url: app.globalData.appUrl + 'search/index',
         method: 'POST',
@@ -35,8 +35,8 @@ Page({
           'Content-Type': 'application/json'
         },
         success: function(res) {
-          console.log(res)
-          console.log(that.data.value)
+          // console.log(res)
+          // console.log(that.data.value)
           if (res.data.code != 200) {
             wx.showToast({
               title: '暂无相关商品！',
@@ -65,9 +65,9 @@ Page({
   },
   //跳转匠人推荐商品列表
   famous: function(e) {
-    console.log(e)
+    // console.log(e)
     var teaid = e.currentTarget.dataset.teaid
-    console.log(teaid)
+    // console.log(teaid)
     wx.navigateTo({
       url: '../goodslist/goodslist?teaid=' + teaid,
     })
@@ -95,9 +95,9 @@ Page({
   },
   //跳转促销活动列表
   active: function(e) {
-    console.log(e)
+    // console.log(e)
     var teaid = e.currentTarget.dataset.teaid
-    console.log(teaid)
+    // console.log(teaid)
     wx.navigateTo({
       url: '../goodslist/goodslist?teaid=' + teaid,
     })
@@ -151,9 +151,9 @@ Page({
   },
   //跳转精选推荐商品详情页
   boutiquedetail: function(e) {
-    console.log(e);
+    // console.log(e);
     var goods_id = e.currentTarget.dataset.goodsid
-    console.log(goods_id)
+    // console.log(goods_id)
     wx.navigateTo({
       url: '../goodsdetail/goodsdetail?goods_id=' + goods_id,
     })
@@ -182,9 +182,9 @@ Page({
 
   //跳转为您优选商品详情页
   goodsdetail: function(e) {
-    console.log(e);
+    // console.log(e);
     var goods_id = e.currentTarget.dataset.goodsid
-    console.log(goods_id)
+    // console.log(goods_id)
     wx.navigateTo({
       url: '../goodsdetail/goodsdetail?goods_id=' + goods_id,
     })
@@ -213,6 +213,7 @@ Page({
   //点击加入购物车
   //隐藏遮罩层
   hiddenmask: function() {
+    var that = this;
     //隐藏遮罩层
     var animation = wx.createAnimation({
       duration: 200,
@@ -238,10 +239,10 @@ Page({
   },
 
   //点击我显示底部弹出框
-  addCars: function(res) {
+  addCars: function (res) {
     //显示对话框
-    console.log(res);
-    that.setData({
+    // console.log(res);
+    this.setData({
       goodsid: res.currentTarget.dataset.goodsdata.goods_id,
       price: res.currentTarget.dataset.goodsdata.goods_price,
       title: res.currentTarget.dataset.goodsdata.goods_title,
@@ -251,7 +252,7 @@ Page({
     })
     this.showModal();
     //显示遮罩层
-    that.setData({
+    this.setData({
       TipStatus: true,
       mask: true
     })
@@ -259,12 +260,13 @@ Page({
   },
   //立即加入购物车
   sure: function(e) {
-    console.log(e)
+    var that = this;
+    // console.log(e)
     var goodslist = wx.getStorageSync('goodslist') || []; //判断购物车是否存在内容 
     var exist = goodslist.find(function(el) { //判断购物车中是否已经存在这条数据
       return el.goods_id == that.data.goodsid
     })
-    console.log(that.data.title)
+    // console.log(that.data.title)
     wx.request({
       url: app.globalData.appUrl + 'cart/add',
       method: 'POST',
@@ -277,7 +279,7 @@ Page({
         num: that.data.num,
       },
       success(res) {
-        console.log(res)
+        // console.log(res)
         if (res.data.code == 200) {
           wx.showToast({
             title: '添加购物车成功!',
@@ -304,7 +306,7 @@ Page({
   },
   //显示对话框
   showModal: function() {
-
+    var that = this;
     // 显示遮罩层
     var animation = wx.createAnimation({ //创建一个动画实例animation
       duration: 200, //持续时间
@@ -326,6 +328,7 @@ Page({
   },
   //隐藏对话框
   hideModal: function() {
+    var that = this;
     that.setData({
       num: 1 ///数量为1
     })
@@ -395,27 +398,10 @@ Page({
     that.getCode();
     wx.login({
       success:function(res){
-        console.log(res)
+        // console.log(res)
         // that.setData({
         //   code:res.code
         // })
-      }
-    })
-    wx.request({
-      url: app.globalData.appUrl + 'user/info',
-      method: 'POST',
-      data: {
-      },
-      success(res) {
-        console.log(123456)
-        console.log(res);
-        if (res.data.code == 401) {
-          R.login();
-          // wx.navigateTo({
-          //   url: '/pages/login/login',
-          // })
-          // console.log(1221)
-        }
       }
     })
     //轮播图接口
@@ -478,7 +464,23 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    
+    var that = this;
+    R.login();
+
+    wx.request({
+      url: app.globalData.appUrl + 'user/info',
+      method: 'POST',
+      data: {
+        openid: wx.getStorageSync('openid')
+      },
+      success(res) {
+        // if (res.data.code == 401) {
+        //   // wx.navigateTo({
+        //   //   url: '/pages/login/login',
+        //   // })
+        // }
+      }
+    })
 
   },
 

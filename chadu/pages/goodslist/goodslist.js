@@ -10,11 +10,58 @@ Page({
     num: 1,
     TipStatus: false, //默认不显示遮罩层
   },
+  //传递value值
+  blur(e) {
+    // console.log(e)
+    this.data.value = e.detail.value
+  },
+  // //搜索按钮
+  goSearch: function (e) {
+    // console.log(e)
+    var that = this;
+    if (this.data.value) {
+      wx.request({
+        url: app.globalData.appUrl + 'search/index',
+        method: 'POST',
+        data: {
+          goods_title: this.data.value
+        },
+        header: {
+          'Content-Type': 'application/json'
+        },
+        success: function (res) {
+          // console.log(res)
+          if (res.data.code != 200) {
+            wx.showToast({
+              title: '暂无相关商品！',
+              icon: 'none',
+              duration: 1500
+            })
+          } else {
+            let str = JSON.stringify(res.data.data);
+            // console.log(str)
+            wx.navigateTo({
+              url: '../goodslist/goodslist?data=' + str
+            })
+          }
+
+          // console.log(res.data.msg)
+        }
+      })
+    } else {
+      wx.showToast({
+        title: '请输入商品名称！',
+        icon: 'none',
+        duration: 1500
+      })
+
+    }
+  },
   //跳转商品详情页
   goodsdetail: function (e) {
-    console.log(e);
+    // console.log(e);
     var goods_id = e.currentTarget.dataset.goodsid
-    console.log(goods_id)
+    // console.log(goods_id)
     wx.navigateTo({
       url: '../goodsdetail/goodsdetail?goods_id=' + goods_id,
     })
@@ -64,8 +111,9 @@ Page({
   },
   //点击我显示底部弹出框
   addCars: function (res) {
+    var that = this;
     //显示对话框
-    console.log(res);
+    // console.log(res);
     that.setData({
       goodsid: res.currentTarget.dataset.goodsdata.goods_id,
       price: res.currentTarget.dataset.goodsdata.goods_price,
@@ -85,6 +133,7 @@ Page({
   //点击加入购物车
   //隐藏遮罩层
   hiddenmask: function () {
+    var that = this;
     //隐藏遮罩层
     var animation = wx.createAnimation({
       duration: 200,
@@ -131,6 +180,7 @@ Page({
   },
   //隐藏对话框
   hideModal: function () {
+    var that = this;
     // 隐藏遮罩层
     var animation = wx.createAnimation({
       duration: 200,
@@ -155,7 +205,8 @@ Page({
   },
   //立即加入购物车
   sure: function (e) {
-    console.log(e)
+    var that = this;
+    // console.log(e)
     var goodslist = wx.getStorageSync('goodslist') || []; //判断购物车是否存在内容
     var exist = goodslist.find(function (el) { //判断购物车中是否已经存在这条数据
       return el.goods_id == that.data.goodsid
@@ -172,7 +223,7 @@ Page({
         num: that.data.num,
       },
       success(res) {
-        console.log(res)
+        // console.log(res)
         if (res.data.code == 200) {
           wx.showToast({
             title: '添加购物车成功',
@@ -232,7 +283,7 @@ Page({
    */
   onLoad: function (options) {
     that = this;
-    console.log(options)
+    // console.log(options)
     if (options.data) {
       let teagoodsList = JSON.parse(options.data);
       that.setData({
@@ -246,7 +297,7 @@ Page({
           tea_id: options.teaid
         },
         success(res) {
-          console.log(res)
+          // console.log(res)
           if (res.data.code == 200) {
             that.setData({
               teagoodsList: res.data.data

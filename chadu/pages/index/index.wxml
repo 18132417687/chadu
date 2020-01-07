@@ -67,7 +67,7 @@
       <text data-goodsid="{{item.goods_id}}"  class="goodstitle">{{item.goods_title}}</text>
       <view class="firstSelectPrice">
         <text data-goodsid="{{item.goods_id}}" bindtap="goodsdetail">￥{{item.goods_price}}</text>
-        <icon class="icon iconfont icongouwuche2" bindtap="addCars" data-goodsdata="{{item}}" data-index='{{index}}'></icon>
+        <icon class="icon iconfont icongouwuche2" data-goodsid='{{item.goods_id}}' bindtap="addCars" data-goodsdata="{{item}}" data-index='{{index}}'></icon>
       </view>
       <!--加入购物车遮罩层屏幕背景变暗的背景  -->
       <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>

@@ -14,7 +14,7 @@ Page({
 
   //导航切换
   studyTeaCategory: function(e) {
-    that = this;
+    var that = this;
     // console.log(e);
     //学茶 文章、视频分类切换
     that.setData({
@@ -29,7 +29,7 @@ Page({
         },
         success(res) {
           if (res.data.code == 200) {
-            console.log(res);
+            // console.log(res);
             that.setData({
               articleList: res.data.data.data
             })
@@ -57,9 +57,9 @@ Page({
   },
   //文章详情页跳转
   articledetail: function(e) {
-    console.log(e);
+    // console.log(e);
     var articleid = e.currentTarget.dataset.articleid
-    console.log(articleid)
+    // console.log(articleid)
     wx.navigateTo({
       url: '../articledetail/articledetail?articleid=' + articleid,
     })
@@ -85,9 +85,9 @@ Page({
   },
   //视频详情页跳转
   videodetail: function(e) {
-    console.log(e)
+    // console.log(e)
     var videoid = e.currentTarget.dataset.videoid
-    console.log(videoid)
+    // console.log(videoid)
     wx.navigateTo({
       url: '../videodetail/videodetail?videoid=' + videoid,
     })
@@ -143,7 +143,7 @@ Page({
         },
         success(res) {
           if (res.data.code == 200) {
-            console.log(res);
+            // console.log(res);
             that.setData({
               articleList: res.data.data.data
             })
@@ -181,6 +181,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    var that = this;
     //页面正在加载
     wx.showLoading({
       title: '正在加载！',
@@ -196,7 +197,7 @@ Page({
       },
       success(res) {
         if (res.data.code == 200) {
-          console.log(res);
+          // console.log(res);
           that.setData({
             articleList: res.data.data.data
           })
@@ -241,7 +242,6 @@ Page({
    */
 
   onPullDownRefresh: function() {
-    console.log(111)
     wx.showLoading({
       title: '正在加载!',
       mask: true,
@@ -256,7 +256,7 @@ Page({
       },
       success(res) {
         if (res.data.code == 200) {
-          console.log(res);
+          // console.log(res);
           that.setData({
             articleList: res.data.data.data
           })
@@ -275,7 +275,7 @@ Page({
       },
       success(res) {
         if (res.data.code == 200) {
-          console.log(res);
+          // console.log(res);
           that.setData({
             videoList: res.data.data.data
           })
@@ -291,7 +291,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-    console.log(88888888)
     wx.showLoading({
       title: '正在加载数据',
       mask: true
@@ -345,7 +344,7 @@ Page({
       articleList: that.data.articleList,
       videoList: that.data.videoList
     })
-    console.log(that.data.articleList)
+    // console.log(that.data.articleList)
   },
 
   /**

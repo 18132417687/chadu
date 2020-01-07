@@ -18,7 +18,7 @@ Page({
 
   //添加收货地址
   goaddress:function(e){
-    console.log(e)
+    // console.log(e)
     wx.navigateTo({
       url: '../address/address',
     })
@@ -27,6 +27,7 @@ Page({
    * 显示支付密码输入层
    */
   showInputLayer: function() {
+    var that = this;
     if (that.data.selectedAddress.length===0){
       wx.showToast({
         icon:'none',
@@ -43,6 +44,7 @@ Page({
    * 隐藏支付密码输入层
    */
   hidePayLayer: function() {
+    var that = this;
     // var val = that.data.pwdVal;
     that.showInputLayer()
     wx.showModal({
@@ -56,7 +58,7 @@ Page({
             pwdVal: ''
           })
         } else if (back.cancel) {
-          console.log('用户点击取消')
+          // console.log('用户点击取消')
           that.showInputLayer(); //显示支付密码输入层
         }
       }
@@ -68,6 +70,7 @@ Page({
    * 获取焦点
    */
   getFocus: function() {
+    var that = this;
     that.setData({
       payFocus: true
     });
@@ -76,7 +79,8 @@ Page({
    * 输入密码监听
    */
   inputPwd: function(e) {
-    console.log(e)
+    var that = this;
+    // console.log(e)
     that.setData({
       pwdVal: e.detail.value
     });
@@ -100,7 +104,7 @@ Page({
         )
       }, );
       var paylist = e.currentTarget.dataset.info;
-      console.log(paylist)
+      // console.log(paylist)
       that.setData({
           paymentList: paylist
         })
@@ -109,7 +113,7 @@ Page({
   },
   //选择地址
   useraddress: function(e) {
-    console.log(e)
+    // console.log(e)
     wx.navigateTo({
       url: '../address/address',
     })
@@ -118,6 +122,7 @@ Page({
 
   //计算购买商品总金额
   totals: function() {
+    var that = this;
     var sum = 0;
     for (var i = 0; i < that.data.paymentList.length; i++) {
       if (that.data.paymentList[i]) {
@@ -147,7 +152,7 @@ Page({
         success: function (res) {
           // console.log(res);
           let newList = res.windowHeight - bottom[0].height;
-          console.log(newList, res.windowHeight, bottom[0].height);
+          // console.log(newList, res.windowHeight, bottom[0].height);
           that.setData({
             listH: newList
           })
@@ -159,18 +164,18 @@ Page({
     that.setData({
       selectedAddress: wx.getStorageSync('addressList')
     })
-    console.log(that.data.selectedAddress)
+    // console.log(that.data.selectedAddress)
     //获取收货地址缓存
     that.setData({
       selectedAddress: wx.getStorageSync('selectaddress')
     })
-    console.log(that.data.selectedAddress)
+    // console.log(that.data.selectedAddress)
     //获取结算缓存
     wx.getStorageSync('paymentList')
     that.setData({
       paymentList: wx.getStorageSync('paymentList')
     })
-    console.log(that.data.paymentList)
+    // console.log(that.data.paymentList)
     that.totals();
     if (that.data.selectedAddress.length === 0) {
       that.setData({
@@ -194,11 +199,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    var that = this;
     //获取收货地址缓存
     that.setData({
       selectedAddress: wx.getStorageSync('addressList')
     })
-    console.log(that.data.selectedAddress)
+    // console.log(that.data.selectedAddress)
     that.setData({
       selectedAddress: wx.getStorageSync('selectaddress')
     })
@@ -207,7 +213,7 @@ Page({
     that.setData({
       paymentList: wx.getStorageSync('paymentList')
     })
-    console.log(that.data.paymentList)
+    // console.log(that.data.paymentList)
     that.totals();
     if (that.data.selectedAddress.length === 0) {
       that.setData({

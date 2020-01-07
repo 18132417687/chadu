@@ -11,7 +11,8 @@ Page({
   },
   //点赞
   zan: function(e) {
-    console.log(e)
+    var that = this;
+    // console.log(e)
     let state = !that.data.state;
     that.setData({
       state: state
@@ -43,7 +44,7 @@ Page({
    */
   onLoad: function(options) {
     that = this;
-    console.log(options)
+    // console.log(options)
     wx.request({
       url: app.globalData.appUrl + 'articleinfo/index',
       method: 'POST',
@@ -51,7 +52,7 @@ Page({
         article_id: options.articleid
       },
       success(res) {
-        console.log(res);
+        // console.log(res);
         that.setData({
           articleDetail: res.data.data //设置值
         })

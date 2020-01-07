@@ -9,7 +9,7 @@ Page({
   data: {},
   //保存修改后的地址
   save: function(e) {
-    console.log(e)
+    // console.log(e)
     var people = e.detail.value.people;
     var phone = e.detail.value.phone;
     var address = e.detail.value.address;
@@ -24,7 +24,7 @@ Page({
       index:index
     }
 
-    console.log(addressList)
+    // console.log(addressList)
     // wx.setStorageSync('index',index)
     wx.setStorageSync('addressedit', addressList );
 

@@ -10,13 +10,14 @@ Page({
   data: {
     tabIndex: 1, //分类导航默认选择为第一个
   },
+  //传递value值
   blur(e) {
-    console.log(e)
+    // console.log(e)
     this.data.value = e.detail.value
   },
   // //搜索按钮
   goSearch: function (e) {
-    console.log(e)
+    // console.log(e)
     var that = this;
     if (this.data.value) {
       wx.request({
@@ -29,7 +30,7 @@ Page({
           'Content-Type': 'application/json'
         },
         success: function (res) {
-          console.log(res)
+          // console.log(res)
           if (res.data.code != 200) {
             wx.showToast({
               title: '暂无相关商品！',
@@ -38,7 +39,7 @@ Page({
             })
           } else {
             let str = JSON.stringify(res.data.data);
-            console.log(str)
+            // console.log(str)
             wx.navigateTo({
               url: '../goodslist/goodslist?data=' + str
             })
@@ -84,7 +85,7 @@ Page({
   },
   //跳转商品列表页
   goodslist: function(e) {
-    console.log(e);
+    // console.log(e);
     var teaid = e.currentTarget.dataset.teaid
     wx.navigateTo({
       url: '../goodslist/goodslist?teaid=' + teaid,

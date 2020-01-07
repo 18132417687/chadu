@@ -17,7 +17,7 @@ Page({
   },
   //跳转商品详情页
   goodsdetail: function(e) {
-    console.log(e)
+    var that = this;
     let carts = that.data.carts; // 获取购物车列表
     // console.log(carts)
     var goods_id = e.currentTarget.dataset.goodsid
@@ -55,15 +55,15 @@ Page({
   // //选择事件
   selectList(e) {
     let that = this;
-    console.log(e)
+    // console.log(e)
     let carts = that.data.carts; // 获取购物车列表
     var index = e.currentTarget.dataset.index; // 获取点击data- 传进来的index索引
     var goodsid = e.currentTarget.dataset.goodsid;
-    console.log(index);
-    console.log(goodsid);
+    // console.log(index);
+    // console.log(goodsid);
     var selected = carts[index].selected; // 获取当前商品的选中状态    获取购物车里面的value值
     carts[index].selected = !selected; // 改变状态  状态取反
-    console.log(carts[index].selected)
+    // console.log(carts[index].selected)
     let selectAllStatus = that.data.selectAllStatus; //是否已经全选
     let str = true; //用str与选择每一项的状态进行判断
     that.setData({
@@ -103,7 +103,7 @@ Page({
       selectAllStatus: selectAllStatus,
       carts: carts
     });
-    console.log(that.data.selectAllStatus)
+    // console.log(that.data.selectAllStatus)
     wx.setStorageSync('goodslist', that.data.carts) //更新状态
     that.total(); // 重新获取总价
     that.number();
@@ -115,7 +115,8 @@ Page({
   },
   //购物车数量加
   add: function(e) {
-    console.log(e)
+    // console.log(e)
+    var that = this;
     var carts = that.data.carts; // 获取购物车列表
     // console.log(carts);
     var index = e.currentTarget.dataset.index; //获取点击事件的索引下标
@@ -140,7 +141,8 @@ Page({
   },
   // //减
   reduce: function(e) {
-    console.log(e);
+    // console.log(e);
+    var that = this;
     var carts = that.data.carts;
     var index = e.currentTarget.dataset.index;
     var num = carts[index].num;
@@ -174,6 +176,7 @@ Page({
   },
   // //删除
   del: function(e) {
+    var that = this;
     wx.showModal({
       title: '提示',
       content: '您确认删除此商品吗？',
@@ -190,7 +193,7 @@ Page({
               goods_id: e.currentTarget.dataset.goodsid
             },
             success(res) {
-              console.log(res)
+              // console.log(res)
               wx.setStorageSync('goodslist', res.data.data)
               if (res.data.code == 200) {
                 that.setData({
@@ -218,6 +221,7 @@ Page({
   },
   //判断单选全选是否选中
   judge: function(e) {
+    var that = this;
     var carts = that.data.carts;
     for (let item of carts) {
       if (item.selected == 0 || item.selected == false) {
@@ -235,6 +239,7 @@ Page({
   },
   // //总计金额
   total: function() {
+    var that = this;
     var sum = 0;
     for (var i = 0; i < that.data.carts.length; i++) {
       if (that.data.carts[i].selected) { //如果商品被选中
@@ -244,11 +249,12 @@ Page({
     that.setData({
       total: sum
     })
-    console.log(that.data.total)
+    // console.log(that.data.total)
     wx.setStorageSync('goodslist', that.data.carts) //更新状态
   },
   //总计数量
   number: function(e) {
+    var that = this;
     var num = 0;
     var carts = that.data.carts;
     for (var i = 0; i < that.data.carts.length; i++) {
@@ -259,19 +265,20 @@ Page({
     that.setData({
       number: num
     })
-    console.log(that.data.number)
+    // console.log(that.data.number)
     wx.setStorageSync('goodslist', that.data.carts) //更新状态
   },
   // //跳转结算页面
   payment: function(e) {
+    var that = this;
     var detailInfo = e.currentTarget.dataset.info;
-    console.log(detailInfo)
+    // console.log(detailInfo)
     let carts = that.data.carts; // 获取购物车列表
     let pay = carts.filter(item => { //筛选
       return item.selected === true;
     })
     if (pay != "") {
-      console.log(pay)
+      // console.log(pay)
       wx.setStorageSync('paymentList', pay)
       wx.navigateTo({
         url: '../payment/payment',
@@ -293,7 +300,7 @@ Page({
       url: app.globalData.appUrl + 'cart/index',
       method: 'POST',
       success(res) {
-        console.log(res)
+        // console.log(res)
         wx.setStorageSync('goodslist', res.data.data)
         if (res.data.code == 200) {
           that.setData({
@@ -330,6 +337,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    var that = this;
     //页面正在加载
     wx.showLoading({
         title: '正在加载！',
