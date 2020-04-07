@@ -16,7 +16,7 @@
   </block>
 </swiper>
 <!-- 广告滚动 -->
-<van-notice-bar speed="30" left-icon="volume-o" text="从即日起，凡是购买本店商品的用户均可以领取本店会员卡一张！" />
+<van-notice-bar speed="30" left-icon="volume-o" text="从即日起，凡是购买本店商品的用户均可领取本店会员卡一张！" />
 <!-- 匠人推荐/活动 -->
 <view class="active">
   <view class="activeLeft" bindtap="famous" data-teaid="81">
