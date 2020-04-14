@@ -441,3 +441,11 @@ swiper,block,swiper-item,swiper-item image{
   border: none;
   color: #ffffff;
 }
+.nomore{
+  display: block;
+  width: 100%;
+  text-align: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #999;
+}

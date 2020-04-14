@@ -52,7 +52,6 @@ Page({
         video_id: options.videoid
       },
       success(res) {
-        // console.log(res);
         that.setData({
           videoDetail: res.data.data //设置值
         })

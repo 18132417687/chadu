@@ -142,6 +142,7 @@ Page({
           study_id: 1
         },
         success(res) {
+          // console.log(res);
           if (res.data.code == 200) {
             // console.log(res);
             that.setData({
@@ -159,6 +160,7 @@ Page({
         study_id: 2
       },
       success(res) {
+        // console.log(res);
         if (res.data.code == 200) {
           // console.log(res);
           that.setData({
@@ -242,6 +244,7 @@ Page({
    */
 
   onPullDownRefresh: function() {
+    that.data.pages = 1
     wx.showLoading({
       title: '正在加载!',
       mask: true,

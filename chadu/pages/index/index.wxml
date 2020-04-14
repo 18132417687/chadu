@@ -102,5 +102,6 @@
         </form>
       </view>
     </view>
+    <text class="nomore">暂无更多数据</text>
   </view>
 </view>
